@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>User Dashboard</title>
+  <title>User Profile</title>
   <style>
     header {
       background-color: #333;
@@ -40,13 +40,9 @@
 
     p {
       font-size: 18px;
-      text-align: center;
+      text-align: left;
       margin: 40px;
-    }
-    .highlight{
-      font-size: 14px;
-      text-align: center;
-      margin: 0px;
+      margin-right: 300px;
     }
 
     h2, h3 {
@@ -68,27 +64,20 @@
     }
 
     .receipt {
-      width: 600px;
-      height: 800px;
+      width: 300px;
+      height: 400px;
       background: url('receipt.png') no-repeat center center;
       background-size: contain;
+      position: relative;  /* Make it the reference point for absolutely positioned children */
       padding: 20px;
-      position: relative;
+      box-sizing: border-box;
+      z-index: 1; /* Ensures the background is behind the content */
     }
 
-    .receipt h4 {
-      position: absolute;
-      top: 160px;
-      left: 150px;
-      font-size: 34px;
-      font-weight: bold;
-    }
-
+    .receipt h4,
     .receipt .donation-details {
-      position: absolute;
-      top: 290px;
-      left: 160px;
-      font-size: 22px;
+      position: relative;
+      z-index: 2; /* Make sure the text stays on top of the background */
     }
 
     .receipt .donation-details span {
@@ -99,10 +88,17 @@
 
     .receipt .amount,
     .receipt .weight-type {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      font-size: 16px;
+      position: relative;
+      z-index: 2; /* Keep the amount or weight type above the receipt background */
+    }
+
+    .total {
+      position: relative;
+      z-index: 2;
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: center;
+      color: #333;
     }
 
   </style>
@@ -125,16 +121,14 @@
   </div>
 </header>
 
-<h2>User Dashboard</h2>
-<p class="highlight">DONATOR PROFILE</p>
-
+<h2>User Profile</h2>
 <div class="profile-picture">
-  <img src="userprofile.png" alt="User Profile Picture" width="210" height="150">
+  <img src="userprofile.png" alt="User Profile Picture" width="150" height="150">
 </div>
 
-<h3>Welcome, John</h3>
-<p>Your Past Donations:</p>
+<h3>Welcome, (username)</h3>
 
+<p>You are a donator.</p>
 
 <div class="receipt-container">
   <!-- First Receipt: Monetary Donations -->
@@ -146,9 +140,9 @@
       <span>03/12/2025 ......... $20</span>
       <span>04/05/2025 ......... $75</span>
       <span>05/25/2025 ......... $100</span>
-      <span>06/09/2025 ......... $95</span>
-      <span>07/21/2025 ......... $45</span>
-      
+    </div>
+    <div class="total">
+      <span><strong>Total: </strong>$275</span>
     </div>
   </div>
 
@@ -161,6 +155,9 @@
       <span>03/12/2025 ......... 7lb Pears</span>
       <span>04/05/2025 ......... 10lb Bananas</span>
       <span>05/25/2025 ......... 2lb Grapes</span>
+    </div>
+    <div class="total">
+      <span><strong>Total Weight: </strong>27lb</span>
     </div>
   </div>
 </div>
