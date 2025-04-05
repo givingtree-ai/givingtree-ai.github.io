@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate</title>
+  <style>
+    header {
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      font-size: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .buttons a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    .buttons a:hover {
+      text-decoration: underline;
+    }
+
+    .buttons a.active {
+      text-decoration: underline;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      text-align: left;
+      margin: 40px;
+      margin-right: 300px;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .iframe-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  Giving Tree
+  <div class="buttons">
+    <a href="index.html" class="home">Home</a>
+    <a href="Purchase.html">Purchase</a>
+    <a href="Donate.html">Donate</a>
+    <a href="Volunteer.html">Volunteer</a>
+    <a href="Cart.html">
+      <img src="carticon.png" alt="Cart" style="width: 30px; height: 30px;">
+    </a>
+    <a href="userdashboard.html">
+      <img src="usericon.png" alt="User Profile" style="width: 30px; height: 30px;">
+    </a>
+  </div>
+</header>
+
+<h2>Make a Donation</h2>
+
+<p>
+  Your contributions help us provide fresh produce to families in need, reduce food waste, and build a stronger, healthier community.<br><br>
+  Use the form below to make a secure donation. Every bit counts and is greatly appreciated.
+</p>
+
+<div class="iframe-container">
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeh8PPZmQJX5xL_pEAF_rhKWju4G83e21HtVelMjpLZ_01BkQ/viewform?embedded=true" 
+          width="640" height="2400" frameborder="0" marginheight="0" marginwidth="0">
+    Loading…
+  </iframe>
+</div>
+
+<script>
+  document.querySelectorAll('.buttons a').forEach(link => {
+    if (window.location.href.includes(link.getAttribute('href'))) {
+      link.classList.add('active');
+    }
+  });
+</script>
+
+</body>
+</html>
 
