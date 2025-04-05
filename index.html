@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Title</title>
+  <style>
+    header {
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      font-size: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .buttons a {
+      background-color: #555;
+      color: white;
+      text-decoration: none;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
+      display: inline-block;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+      overflow: hidden;
+      height: 400px;
+    }
+
+    .slide {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      position: absolute;
+      width: 100%;
+    }
+
+    .slide.active-slide {
+      opacity: 1;
+      position: relative;
+    }
+
+    .slide img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+      margin: auto;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .active {
+      background-color: #717171;
+    }
+
+    p {
+      font-size: 18px;
+      text-align: left;
+      margin: 40px;
+      margin-right: 300px;
+    }
+    h3 {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  Header
+  <div class="buttons">
+    <a href="index.html">Home</a>
+    <a href="Purchase.html">Purchase</a>
+    <a href="Donate.html">Donate</a>
+    <a href="Volunteer.html">Volunteer</a>
+    <a href="Cart.html">Cart</a>
+    <a href="My Account.html">My Account</a>
+  </div>
+</header>
+
+<div class="slideshow-container" id="slideshow">
+  <div class="slide active-slide">
+    <img src="homepage-fruittree.png" alt="Fruit Tree">
+  </div>
+  <div class="slide">
+    <img src="https://via.placeholder.com/800x300?text=Slide+2" alt="Slide 2">
+  </div>
+  <div class="slide">
+    <img src="https://via.placeholder.com/800x300?text=Slide+3" alt="Slide 3">
+  </div>
+</div>
+
+<div class="dots">
+  <span class="dot active" onclick="showSlide(0)"></span>
+  <span class="dot" onclick="showSlide(1)"></span>
+  <span class="dot" onclick="showSlide(2)"></span>
+</div>
+
+<h2 style="text-align: left; margin: 20px;">Support Our Mission</h2>
+<p>
+  As a startup, our goal is to reduce the waste of community fruits and vegetables that the right people could enjoy.
+  Often, homeowners with big fruit trees do not have the time or accessibility to pick their fruits, and a lot likely gets wasted and stays on the trees. 
+  By giving homeowners the opportunity to donate their fruit, either by them picking it for us or our volunteers picking it for them, we aim to reduce food wastage and help people in need.
+  <br>
+  <br>
+  
+</p>
+<p>
+  We appreciate any donations of fruits, vegetables, or money.
+</p>
+<div style="text-align: center; margin: 20px;">
+  <a href="Donate.html" style="background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+    Donate Now
+  </a>
+</div>
+<h3 style="text-align: left; margin: 20px;">Proceeds</h3>
+<p>
+  Our proceeds are versatile and used for the following:
+
+      <br>-The collected produce is distributed to locals interested in enjoying pesticide-free, homegrown fruit or vegetables.
+
+      <br>-Collected produce may also be sold at farmers markets at a discounted price because the produce is not quality-checked for taste and may not have as long a shelf life.
+</p>
+
+<script>
+  let slideIndex = 0;
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
+  const slideshow = document.getElementById("slideshow");
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active-slide");
+      dots[i].classList.remove("active");
+    });
+    slides[index].classList.add("active-slide");
+    dots[index].classList.add("active");
+    slideIndex = index;
+  }
+
+  function nextSlide() {
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide(slideIndex);
+  }
+
+  function prevSlide() {
+    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+    showSlide(slideIndex);
+  }
+
+  // Auto slide every 5 seconds
+  setInterval(nextSlide, 5000);
+
+  // Click to go to next
+  slideshow.addEventListener("click", nextSlide);
+
+  // Swipe support
+  let startX = 0;
+  slideshow.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  slideshow.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) nextSlide();
+    else if (endX - startX > 50) prevSlide();
+  });
+
+  showSlide(slideIndex);
+</script>
+
+</body>
+</html>
+
