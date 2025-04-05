@@ -87,6 +87,14 @@
     Our focus is mainly to collect fruits and vegetables from big trees that often go to waste due to homeowners not being able to finish the produce or lacking the time or accessibility to pick it. By rescuing this fresh, nutritious food, we are not only preventing produce from rotting unused but also directly combating hunger in our communities. The surplus we collect is donated to the California Association of Food Banks, where it’s distributed to families facing food insecurity across the state. Additionally, the funds we raise support Feeding America, a national nonprofit committed to developing long-term, sustainable solutions to end hunger. Through our project, we’re turning overlooked abundance into opportunity—reducing waste, feeding people, and investing in a more equitable food system.
   </p>
 </div>
+<div style="text-align: center; margin-top: 40px;">
+  <label style="font-size: 18px;">
+    If you would like to donate money directly to our charities, please enter an amount in the following box:
+  </label><br><br>
+  <span style="font-size: 20px;">$</span>
+  <input type="number" id="donationAmount" style="font-size: 18px; width: 150px; padding: 5px;" />
+  <button onclick="saveAmount()" style="font-size: 18px; margin-left: 10px;">→ Proceed to Payment</button>
+</div>
 
 
 
@@ -101,6 +109,13 @@
       link.classList.add('active');
     }
   });
+  function saveAmount() {
+    const amount = document.getElementById('donationAmount').value;
+    if (amount) {
+      localStorage.setItem('donationAmount', amount);
+      window.location.href = 'payment.html';
+    }
+  }
 </script>
 
 </body>
