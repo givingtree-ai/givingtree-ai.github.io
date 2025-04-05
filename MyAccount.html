@@ -40,8 +40,9 @@
 
     p {
       font-size: 18px;
-      text-align: center;
+      text-align: left;
       margin: 40px;
+      margin-right: 300px;
     }
 
     h2, h3 {
@@ -67,23 +68,16 @@
       height: 400px;
       background: url('receipt.png') no-repeat center center;
       background-size: contain;
+      position: relative;  /* Make it the reference point for absolutely positioned children */
       padding: 20px;
-      position: relative;
+      box-sizing: border-box;
+      z-index: 1; /* Ensures the background is behind the content */
     }
 
-    .receipt h4 {
-      position: absolute;
-      top: 10px;
-      left: 20px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
+    .receipt h4,
     .receipt .donation-details {
-      position: absolute;
-      top: 60px;
-      left: 20px;
-      font-size: 16px;
+      position: relative;
+      z-index: 2; /* Make sure the text stays on top of the background */
     }
 
     .receipt .donation-details span {
@@ -94,10 +88,8 @@
 
     .receipt .amount,
     .receipt .weight-type {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      font-size: 16px;
+      position: relative;
+      z-index: 2; /* Keep the amount or weight type above the receipt background */
     }
 
   </style>
@@ -122,47 +114,4 @@
 
 <h2>User Profile</h2>
 <div class="profile-picture">
-  <img src="userprofile.png" alt="User Profile Picture" width="220" height="150">
-</div>
-
-<h3>Welcome, (username)</h3>
-
-<p>You are a donator.</p>
-
-<div class="receipt-container">
-  <!-- First Receipt: Monetary Donations -->
-  <div class="receipt">
-    <h4>Monetary Donations</h4>
-    <div class="donation-details">
-      <span>01/15/2025 ......... $50</span>
-      <span>02/02/2025 ......... $30</span>
-      <span>03/12/2025 ......... $20</span>
-      <span>04/05/2025 ......... $75</span>
-      <span>05/25/2025 ......... $100</span>
-    </div>
-  </div>
-
-  <!-- Second Receipt: Produce Donations -->
-  <div class="receipt">
-    <h4>Produce Donations</h4>
-    <div class="donation-details">
-      <span>01/15/2025 ......... 3lb Apples</span>
-      <span>02/02/2025 ......... 5lb Oranges</span>
-      <span>03/12/2025 ......... 7lb Pears</span>
-      <span>04/05/2025 ......... 10lb Bananas</span>
-      <span>05/25/2025 ......... 2lb Grapes</span>
-    </div>
-  </div>
-</div>
-
-<script>
-  // Function to highlight active page
-  document.querySelectorAll('.buttons a').forEach(link => {
-    if (window.location.href.includes(link.getAttribute('href'))) {
-      link.classList.add('active');
-    }
-  });
-</script>
-
-</body>
-</html>
+  <img src="userprofile.png" alt="User Profile Picture" width="150" height="
