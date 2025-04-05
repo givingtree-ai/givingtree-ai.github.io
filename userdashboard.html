@@ -25,10 +25,7 @@
       font-size: inherit;
     }
 
-    .buttons a:hover {
-      text-decoration: underline;
-    }
-
+    .buttons a:hover,
     .buttons a.active {
       text-decoration: underline;
     }
@@ -43,7 +40,8 @@
       text-align: center;
       margin: 40px;
     }
-    .highlight{
+
+    .highlight {
       font-size: 14px;
       text-align: center;
       margin: 0px;
@@ -65,15 +63,18 @@
       display: flex;
       justify-content: space-around;
       margin: 30px;
+      flex-wrap: wrap;
     }
 
     .receipt {
       width: 600px;
       height: 800px;
-      background: url('receipt.png') no-repeat center center;
       background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
       padding: 20px;
       position: relative;
+      margin: 20px;
     }
 
     .receipt h4 {
@@ -84,27 +85,24 @@
       font-weight: bold;
     }
 
-    .receipt .donation-details {
+    .donation-details {
       position: absolute;
       top: 290px;
       left: 160px;
       font-size: 22px;
     }
 
-    .receipt .donation-details span {
+    .donation-details span {
       display: flex;
       justify-content: space-between;
       margin: 5px 0;
     }
 
-    .receipt .amount,
-    .receipt .weight-type {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      font-size: 16px;
+    .total {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 22px;
     }
-
   </style>
 </head>
 <body>
@@ -135,10 +133,9 @@
 <h3>Welcome, John</h3>
 <p>Your Past Donations:</p>
 
-
 <div class="receipt-container">
   <!-- First Receipt: Monetary Donations -->
-  <div class="receipt">
+  <div class="receipt" style="background-image: url('receipt1.png');">
     <h4>Monetary Donations</h4>
     <div class="donation-details">
       <span>01/15/2025 ......... $50</span>
@@ -148,12 +145,12 @@
       <span>05/25/2025 ......... $100</span>
       <span>06/09/2025 ......... $95</span>
       <span>07/21/2025 ......... $45</span>
-      <span><br><br><br><br>Total ......... $415</span>
+      <span class="total">Total ......... $415</span>
     </div>
   </div>
 
   <!-- Second Receipt: Produce Donations -->
-  <div class="receipt">
+  <div class="receipt" style="background-image: url('receipt2.png');">
     <h4>Produce Donations</h4>
     <div class="donation-details">
       <span>01/15/2025 ......... 3lb Apples</span>
@@ -161,16 +158,12 @@
       <span>03/12/2025 ......... 7lb Pears</span>
       <span>04/05/2025 ......... 10lb Bananas</span>
       <span>05/25/2025 ......... 2lb Grapes</span>
-      <span><br><br><br><br><br><br><br>Total ......... 27lb</span>
-    </div>
-    <div class="total">
-      <span><strong>Total: </strong>27lb</span>
+      <span class="total">Total ......... 27lb</span>
     </div>
   </div>
 </div>
 
 <script>
-  // Function to highlight active page
   document.querySelectorAll('.buttons a').forEach(link => {
     if (window.location.href.includes(link.getAttribute('href'))) {
       link.classList.add('active');
