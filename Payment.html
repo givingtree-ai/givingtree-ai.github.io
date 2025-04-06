@@ -99,8 +99,8 @@
         }
 
         .payment-method img {
-            width: 20px;
-            height: 20px;
+            width: 45px;
+            height: 45px;
             margin-right: 10px;
         }
         .payment-method p{
@@ -120,37 +120,25 @@
             font-family: 'Roboto Condensed', sans-serif;
         }
 
-        .payment-form button {
-            padding: 8px 16px;
-            background-color: #28a745;
+        .payment-form button, #addPaymentBtn, #confirmPayment {
+            padding: 10px 15px;
+            background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
+            font-family: 'Pathway Extreme', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
         }
 
-        .payment-form button:hover {
-            background-color: #218838;
-        }
-
-        #confirm-order {
-            margin-top: 20px;
-            display: flex;
-            justify-content: flex-end;
+        .payment-form button:hover, #addPaymentBtn:hover, #confirmPayment:hover {
+            background-color: #45a049;
         }
 
         #confirm-payment {
-            padding: 10px 20px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        #confirm-payment:hover {
-            background-color: #218838;
+            margin-top:20px;
+            text-align: center;
         }
         .payment-select{
             display: flex;
@@ -215,10 +203,6 @@
         </div>
     </div>
 
-    <div class="confirm-order">
-        <button id="confirmOrder">Confirm Order</button>
-    </div>
-
     <div id="confirm-payment">
         <button id="confirmPayment">Confirm Payment</button>
     </div>
@@ -227,7 +211,6 @@
         const addPaymentBtn = document.getElementById('addPaymentBtn');
         const paymentForm = document.getElementById('paymentForm');
         const addCardBtn = document.getElementById('addCardBtn');
-        const confirmOrder = document.getElementById('confirmOrder');
         const confirmPayment = document.getElementById('confirmPayment');
         const newCardDiv = document.getElementById('newCardDiv');
         const mastercardText = document.getElementById('mastercardText');
@@ -244,10 +227,6 @@
                 newCardDiv.style.display = 'flex';
                 paymentForm.style.display = 'none';
             }
-        });
-
-        confirmOrder.addEventListener('click', function () {
-            alert("Order has been confirmed!");
         });
 
         confirmPayment.addEventListener('click', function () {
