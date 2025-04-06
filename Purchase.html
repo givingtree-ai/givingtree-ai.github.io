@@ -7,42 +7,31 @@
   <style>
     body {
   background-color: #FEFAE0;
-}
-
+  
     header {
-  background-color: #224222; /* updated to a dark green color */
-  color: white;
-  padding: 15px;
-  font-size: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 12px; /* optional: adds rounded corners */
-  margin: 20px;         /* optional: adds spacing around header */
-}
+    background-color: #224222; /* dark green */
+    color: white;
+    padding: 15px;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px; /* optional: adds rounded corners */
+    margin: 20px;         /* optional: adds spacing around header */
+  }
+  
+  header .buttons a {
+    color: #FEFAE0; /* light color for button text */
+  }
+  
+  header .buttons a:hover {
+    text-decoration: underline;
+  }
+  
+  header .buttons a.active {
+    text-decoration: underline;
+  }
 
-    .buttons {
-      display: flex;
-      gap: 10px;
-    }
-
-    .buttons a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 12px;
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-size: inherit;
-    }
-
-    .buttons a:hover {
-      text-decoration: underline;
-    }
-
-    .buttons a.active {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
