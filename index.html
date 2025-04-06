@@ -1,289 +1,270 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Title</title>
-<link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@300&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@800&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      background-color: #B5C99A; /* New background color */
-    }
-  
-      body {
-        font-family: "Pathway Extreme", sans-serif;
-        font-weight: 300;
-      }
+    <style>
+        body {
+            background-color: #B5C99A;
+            font-family: "Pathway Extreme", sans-serif;
+            font-weight: 300;
+        }
 
-      .londrina-solid-regular {
-        font-family: "Londrina Solid", sans-serif;
-        font-weight: 300;
-        font-style: normal;
-      }
+        .londrina-solid-regular {
+            font-family: "Londrina Solid", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+        }
 
+        header {
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            font-size: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 6px;
+            margin: 20px;
+        }
 
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
 
-      header {
-  background-color: #333;
-  color: white;
-  padding: 5px;
-  font-size: 30px;
-  display: flex;
-  justify-content: space-between; /* Spreads left and right */
-  align-items: center;
-  border-radius: 6px;
-  margin: 20px;
-}
+        .header-title {
+            margin-left: 12px;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 800;
+        }
 
-/* LEFT side: logo + title */
-.header-left {
-  display: flex;
-  align-items: center;
-}
+        .buttons a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            background: none;
+            border: none;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 600;
+            font-size: inherit;
+            display: flex;
+            align-items: center;
+        }
 
-.header-title {
-  margin-left: 12px;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-weight: 800;
-}
+        .buttons a:hover {
+            text-decoration: underline;
+        }
 
-            .buttons a {
-          color: white;
-          text-decoration: none;
-          padding: 8px 12px;
-          background: none;
-          border: none;
-          font-family: 'Roboto Condensed', sans-serif;
-          font-weight: 600;
-          font-size: inherit;
-          display: flex;
-          align-items: center;
-      }
+        .buttons a.active {
+            text-decoration: underline;
+        }
 
-      
-      .buttons a:hover {
-        text-decoration: underline;
-      }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
 
-      .buttons a.active {
-        text-decoration: underline;
-      }
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            height: 400px;
+        }
 
-      .buttons {
-        display: flex;
-        gap: 10px;
-      }
+        .slide {
+            position: absolute;
+            width: 100%;
+            transition: transform 0.5s ease-in-out;
+            transform: translateX(100%);
+        }
 
-      .slideshow-container {
-        position: relative;
-        max-width: 100%;
-        margin: auto;
-        overflow: hidden;
-        height: 400px;
-      }
+        .slide.active-slide {
+            transform: translateX(0);
+        }
 
-      .slide {
-        slide: 0;
-        transition: slide 0.5s ease-in-out;
-        position: absolute;
-        width: 100%;
-      }
+        .slide img {
+            width: 520px;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            margin: auto;
+        }
 
-      .slide.active-slide {
-        opacity: 1;
-        position: relative;
-      }
+        .dots {
+            text-align: center;
+            margin-top: 10px;
+        }
 
-      .slide img {
-        width: 520px;
-        height: 400px;
-        object-fit: cover;
-        display: block;
-        margin: auto;
-      }
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
 
-      .dots {
-        text-align: center;
-        margin-top: 10px;
-      }
+        .active {
+            background-color: #717171;
+        }
 
-      .dot {
-        height: 10px;
-        width: 10px;
-        margin: 0 5px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        cursor: pointer;
-      }
+        p {
+            font-size: 22px;
+            text-align: left;
+            margin: 60px;
+            margin-right: 200px;
+        }
 
-      .active {
-        background-color: #717171;
-      }
+        .highlight {
+            font-size: 18px;
+            text-align: center;
+            margin: 40px;
+        }
 
-      p {
-        font-size: 22px;
-        text-align: left;
-        margin: 60px;
-        margin-right: 200px;
-      }
+        h2 {
+            font-family: "Roboto Condensed", sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 20px;
+            left-margin: 60px;
+            text-align: left;
+        }
 
-      .highlight {
-        font-size: 18px;
-        text-align: center;
-        margin: 40px;
-      }
-
-      /* Styling for h2 */
-      h2 {
-        font-family: "Roboto Condensed", sans-serif;
-        font-weight: 800;
-        font-size: 32px;
-        font-weight: bold;
-        margin: 20px;
-        left-margin: 60px;
-        text-align: left;
-      }
-
-      /* Styling for h3 */
-      h3 {
-        font-family: "Roboto Condensed", sans-serif;
-        font-weight: 800;
-        font-size: 32px;
-        font-weight: bold;
-        margin: 25px;
-        text-align: center;
-      }
-  </style>
+        h3 {
+            font-family: "Roboto Condensed", sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 25px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <div class="header-left">
-    <img src="logo.png" alt="Logo" style="width: 55px; height: 55px; padding: 10px;">
-    <span class="header-title">GIVING TREE</span>
-  </div>
+    <header>
+        <div class="header-left">
+            <img src="logo.png" alt="Logo" style="width: 55px; height: 55px; padding: 10px;">
+            <span class="header-title">GIVING TREE</span>
+        </div>
 
-  <div class="buttons">
-    <a href="index.html" class="home">Home</a>
-    <a href="Purchase.html">Purchase</a>
-    <a href="Donate.html">Donate</a>
-    <a href="Volunteer.html">Volunteer</a>
-    <a href="Cart.html">
-      <img src="carticon.png" alt="Cart" style="width: 55px; height: 55px;">
-    </a>
-    <a href="userdashboard.html">
-      <img src="usericon.png" alt="User Profile" style="width: 55px; height: 55px;">
-    </a>
-  </div>
-</header>
+        <div class="buttons">
+            <a href="index.html" class="home">Home</a>
+            <a href="Purchase.html">Purchase</a>
+            <a href="Donate.html">Donate</a>
+            <a href="Volunteer.html">Volunteer</a>
+            <a href="Cart.html">
+                <img src="carticon.png" alt="Cart" style="width: 55px; height: 55px;">
+            </a>
+            <a href="userdashboard.html">
+                <img src="usericon.png" alt="User Profile" style="width: 55px; height: 55px;">
+            </a>
+        </div>
+    </header>
 
+    <h3>Our Process</h3>
 
-<h3>Our Process</h3>
+    <div class="slideshow-container" id="slideshow">
+        <div class="slide active-slide"><img src="img1.png" alt="Slide 1"></div>
+        <div class="slide"><img src="img2.png" alt="Slide 2"></div>
+        <div class="slide"><img src="img3.png" alt="Slide 3"></div>
+        <div class="slide"><img src="img4.png" alt="Slide 4"></div>
+        <div class="slide"><img src="img5.png" alt="Slide 5"></div>
+    </div>
 
-<!-- Slideshow content -->
-<div class="slideshow-container" id="slideshow">
-  <div class="slide active-slide"><img src="img1.png" alt="Slide 1"></div>
-  <div class="slide"><img src="img2.png" alt="Slide 2"></div>
-  <div class="slide"><img src="img3.png" alt="Slide 3"></div>
-  <div class="slide"><img src="img4.png" alt="Slide 4"></div>
-  <div class="slide"><img src="img5.png" alt="Slide 5"></div>
-</div>
+    <div class="dots">
+        <span class="dot active" onclick="showSlide(0)"></span>
+        <span class="dot" onclick="showSlide(1)"></span>
+        <span class="dot" onclick="showSlide(2)"></span>
+        <span class="dot" onclick="showSlide(3)"></span>
+        <span class="dot" onclick="showSlide(4)"></span>
+    </div>
 
-<!-- Dots navigation -->
-<div class="dots">
-  <span class="dot active" onclick="showSlide(0)"></span>
-  <span class="dot" onclick="showSlide(1)"></span>
-  <span class="dot" onclick="showSlide(2)"></span>
-  <span class="dot" onclick="showSlide(3)"></span>
-  <span class="dot" onclick="showSlide(4)"></span>
-</div>
+    <h2>Support Our Mission</h2>
+    <p>
+        As a startup, our goal is to reduce the waste of community fruits and vegetables that the right people could enjoy.
+        Often, homeowners with big fruit trees do not have the time or accessibility to pick their fruits, and a lot likely gets wasted and stays on the trees.
+        By giving homeowners the opportunity to donate their fruit, either by them picking it for us or our volunteers picking it for them, we aim to reduce food wastage and help people in need.
+    </p>
 
+    <p class="highlight">
+        We greatly appreciate any donations of fruits, vegetables, or money.
+    </p>
 
-<h2>Support Our Mission</h2>
-<p>
-  As a startup, our goal is to reduce the waste of community fruits and vegetables that the right people could enjoy.
-  Often, homeowners with big fruit trees do not have the time or accessibility to pick their fruits, and a lot likely gets wasted and stays on the trees. 
-  By giving homeowners the opportunity to donate their fruit, either by them picking it for us or our volunteers picking it for them, we aim to reduce food wastage and help people in need.
-</p>
+    <div style="text-align: center; margin: 20px;">
+        <a href="Donate.html" style="background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+            Donate Now
+        </a>
+    </div>
 
-<p class="highlight">
-  We greatly appreciate any donations of fruits, vegetables, or money.
-</p>
+    <h2>Proceeds</h2>
+    <p>
+        Our proceeds are versatile and used for the following:
 
-<div style="text-align: center; margin: 20px;">
-  <a href="Donate.html" style="background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
-    Donate Now
-  </a>
-</div>
+        <br><br>-  The collected produce is distributed to locals interested in enjoying pesticide-free, homegrown fruit or vegetables.
+        <br><br>-  Collected produce may also be sold at farmers markets at reasonable prices because the produce is not quality-checked and may not have as long a shelf life.
+        <br><br>-  Collected produce may be donated to local food banks, based on their need for what we have collected.
+        <br><br>-  Donations are optional but much appreciated and will be donated to food banks or to charities supporting people in need of food.
+    </p>
 
+    <script>
+        document.querySelectorAll('.buttons a').forEach(link => {
+            if (window.location.href.includes(link.getAttribute('href'))) {
+                link.classList.add('active');
+            }
+        });
 
-<h2>Proceeds</h2>
-<p>
-  Our proceeds are versatile and used for the following:
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".dot");
+        const slideshow = document.getElementById("slideshow");
 
-      <br><br>-  The collected produce is distributed to locals interested in enjoying pesticide-free, homegrown fruit or vegetables.
-      <br><br>-  Collected produce may also be sold at farmers markets at reasonable prices because the produce is not quality-checked and may not have as long a shelf life.
-      <br><br>-  Collected produce may be donated to local food banks, based on their need for what we have collected.
-      <br><br>-  Donations are optional but much appreciated and will be donated to food banks or to charities supporting people in need of food.
-</p>
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove("active-slide");
+                dots[i].classList.remove("active");
+            });
+            slides[index].classList.add("active-slide");
+            dots[index].classList.add("active");
+            slideIndex = index;
+        }
 
-<script>
-  // Function to highlight active page
-  document.querySelectorAll('.buttons a').forEach(link => {
-    if (window.location.href.includes(link.getAttribute('href'))) {
-      link.classList.add('active');
-    }
-  });
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+        }
 
-  let slideIndex = 0;
-  const slides = document.querySelectorAll(".slide");
-  const dots = document.querySelectorAll(".dot");
-  const slideshow = document.getElementById("slideshow");
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+            showSlide(slideIndex);
+        }
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove("active-slide");
-      dots[i].classList.remove("active");
-    });
-    slides[index].classList.add("active-slide");
-    dots[index].classList.add("active");
-    slideIndex = index;
-  }
+        setInterval(nextSlide, 4000);
 
-  function nextSlide() {
-    slideIndex = (slideIndex + 1) % slides.length;
-    showSlide(slideIndex);
-  }
+        slideshow.addEventListener("click", nextSlide);
 
-  function prevSlide() {
-    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-    showSlide(slideIndex);
-  }
+        let startX = 0;
+        slideshow.addEventListener("touchstart", e => {
+            startX = e.touches[0].clientX;
+        });
 
-  // Auto slide every 5 seconds
-  setInterval(nextSlide, 4000);
+        slideshow.addEventListener("touchend", e => {
+            const endX = e.changedTouches[0].clientX;
+            if (startX - endX > 50) nextSlide();
+            else if (endX - startX > 50) prevSlide();
+        });
 
-  // Click to go to next
-  slideshow.addEventListener("click", nextSlide);
-
-  // Swipe support
-  let startX = 0;
-  slideshow.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-  });
-
-  slideshow.addEventListener("touchend", e => {
-    const endX = e.changedTouches[0].clientX;
-    if (startX - endX > 50) nextSlide();
-    else if (endX - startX > 50) prevSlide();
-  });
-
-  showSlide(slideIndex);
-</script>
+        showSlide(slideIndex);
+    </script>
 
 </body>
 </html>
