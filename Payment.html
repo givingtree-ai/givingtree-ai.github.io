@@ -105,9 +105,11 @@
         .payment-method img {
             width: 45px;
             height: 45px;
+            margin-right: 5px; /* Reduced margin */
         }
         .payment-method p{
             font-family: 'Pathway Extreme', sans-serif;
+            margin-right: 5px; /* Reduced margin */
         }
 
         .add-payment-container {
@@ -174,7 +176,7 @@
 
     <h2>Payment</h2>
 
-    <div class="summary">
+    <div class="summary" id="summary">
         <h3>Order Summary:</h3>
         <p>Item 1: Apples - 5 lbs - $10.00</p>
         <p>Item 2: Bananas - 3 lbs - $6.00</p>
@@ -238,6 +240,36 @@
         confirmPayment.addEventListener('click', function () {
             alert("Thank you for donating! As a reminder, all of our proceeds go to charities.");
         });
+
+        // Function to get query parameters from the URL
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Function to display the order summary
+        function displaySummary() {
+            let summaryDiv = document.getElementById('summary');
+            let cartItems = getParameterByName('cartItems');
+
+            if (cartItems) {
+                let items = JSON.parse(cartItems);
+                let itemsHTML = "";
+                let totalPrice = 0;
+                items.forEach(item => {
+                    itemsHTML += `<p>${item.name} - ${item.weight} - $${item.price}</p>`;
+                    totalPrice += parseFloat(item.price);
+                });
+                summaryDiv.innerHTML = "<h3>Order Summary:</h3>" + itemsHTML + `<p>Total: $${totalPrice.toFixed(2)}</p>`;
+            }
+        }
+
+        // Call displaySummary when the page loads
+        displaySummary();
     </script>
 </body>
 </html>
