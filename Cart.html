@@ -180,6 +180,20 @@
         #checkout:hover{
             background-color: #218838;
         }
+        #pickup-delivery {
+            margin-top: 20px;
+        }
+        #address-form {
+            display: none;
+            margin-top: 10px;
+        }
+        #address-form input, #address-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -205,7 +219,22 @@
 
     <div id="cartItems">
     </div>
-    <div id = "total-checkout">
+
+    <div id="pickup-delivery">
+        <input type="radio" id="pickup" name="delivery" value="pickup" checked>
+        <label for="pickup">I will pickup from the Milpitas warehouse</label><br>
+        <input type="radio" id="delivery" name="delivery" value="delivery">
+        <label for="delivery">Delivery</label>
+        <div id="address-form">
+            <input type="text" id="street" placeholder="Street Address">
+            <input type="text" id="city" placeholder="City">
+            <input type="text" id="state" placeholder="State">
+            <input type="text" id="zip" placeholder="ZIP Code">
+            <textarea id="notes" placeholder="Delivery Notes (optional)"></textarea>
+        </div>
+    </div>
+
+    <div id="total-checkout">
         <div id="total"></div>
         <button id="checkout">Go to Payment</button>
     </div>
@@ -226,6 +255,12 @@
         let editIndex = null;
         const imageFiles = ['p1.png', 'p2.png', 'p3.png', 'p4.png', 'p5.png', 'p6.png', 'p7.png', 'p8.png', 'p9.png', 'p10.png', 'p11.png', 'p12.png', 'p13.png', 'p14.png', 'p15.png', 'p16.png'];
         const stockAmounts = [20, 15, 30, 25, 18, 22, 10, 12, 28, 19, 14, 16, 8, 9, 21, 17]; // Hardcoded stock amounts
+        const deliveryRadio = document.getElementById('delivery');
+        const addressForm = document.getElementById('address-form');
+
+        deliveryRadio.addEventListener('change', function() {
+            addressForm.style.display = this.checked ? 'block' : 'none';
+        });
 
         function displayCartItems() {
             cartItemsDiv.innerHTML = '';
