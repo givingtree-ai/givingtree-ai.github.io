@@ -4,28 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Donate</title>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@800&display=swap" rel="stylesheet">
 
   <style>
-    /* Add the Pathway Extreme Light font */
-    @font-face {
-      font-family: "Pathway Extreme";
-      src: url('path/to/your/font.woff2') format('woff2'); /* Update this with the actual font file URL */
+    /* Roboto Condensed class */
+    .roboto-condensed {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 800;
+    }
+
+    /* Pathway Extreme Light class */
+    .pathway-extreme-light {
+      font-family: "Pathway Extreme", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 300;
+      font-style: normal;
+      font-variation-settings: "wdth" 100;
     }
 
     body {
       background-color: #B5C99A;
-    }
-
-    /* Apply Pathway Extreme Light font to all text */
-    .pathway-extreme-light {
-      font-family: "Pathway Extreme", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 300; /* Light 300 weight */
-      font-style: normal;
-      font-variation-settings: "wdth" 100;
+      margin: 0;
     }
 
     header {
@@ -36,6 +39,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
     }
 
     .buttons a {
@@ -56,20 +64,14 @@
       text-decoration: underline;
     }
 
-    .buttons {
-      display: flex;
-      gap: 10px;
-    }
-
     p.pathway-extreme-light {
       font-size: 18px;
       text-align: left;
       margin: 40px;
     }
 
-    h2.pathway-extreme-light {
-      font-size: 24px;
-      font-weight: bold;
+    h2.roboto-condensed {
+      font-size: 28px;
       margin: 20px;
       text-align: center;
     }
@@ -99,7 +101,7 @@
   </div>
 </header>
 
-<h2 class="pathway-extreme-light">Make a Donation</h2>
+<h2 class="roboto-condensed">Make a Donation</h2>
 
 <div style="display: flex; align-items: flex-start; margin: 40px;">
   <img src="recycleicon.png" alt="Recycle Icon" width="150" height="150" style="margin-right: 20px; margin-top: 20px;">
@@ -107,6 +109,7 @@
     Our focus is mainly to collect fruits and vegetables from big trees that often go to waste due to homeowners not being able to finish the produce or lacking the time or accessibility to pick it. By rescuing this fresh, nutritious food, we are not only preventing produce from rotting unused but also directly combating hunger in our communities. The surplus we collect is donated to the California Association of Food Banks, where it’s distributed to families facing food insecurity across the state. Additionally, the funds we raise support Feeding America, a national nonprofit committed to developing long-term, sustainable solutions to end hunger. Through our project, we’re turning overlooked abundance into opportunity—reducing waste, feeding people, and investing in a more equitable food system.
   </p>
 </div>
+
 <div style="text-align: center; margin-top: 40px;">
   <label style="font-size: 18px;" class="pathway-extreme-light">
     If you would like to donate money directly to our charities, please enter an amount in the following box:
@@ -117,8 +120,7 @@
 </div>
 
 <div class="iframe-container">
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfyXJRzipEIm2WcgG-aZbhnI8AZ1Z410l6AehBGNg8irCX-aw/viewform?embedded=true" width="640"   height="2047" frameborder="0" marginheight="0" marginwidth="0">Loading…
-  </iframe>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfyXJRzipEIm2WcgG-aZbhnI8AZ1Z410l6AehBGNg8irCX-aw/viewform?embedded=true" width="640" height="2047" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 </div>
 
 <script>
@@ -127,6 +129,7 @@
       link.classList.add('active');
     }
   });
+
   function saveAmount() {
     const amount = document.getElementById('donationAmount').value;
     if (amount) {
