@@ -10,13 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@800&display=swap" rel="stylesheet">
 
   <style>
-    /* Roboto Condensed class */
     .roboto-condensed {
       font-family: 'Roboto Condensed', sans-serif;
       font-weight: 800;
     }
 
-    /* Pathway Extreme Light class */
     .pathway-extreme-light {
       font-family: "Pathway Extreme", sans-serif;
       font-optical-sizing: auto;
@@ -91,28 +89,48 @@
       text-align: center;
     }
 
-    .iframe-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
     .payment-method {
       border: 1px solid #ccc;
-      padding: 10px;
-      margin: 10px;
+      padding: 15px;
+      margin: 20px auto;
       text-align: center;
+      width: 300px;
+      border-radius: 8px;
+      background-color: white;
     }
 
     .payment-form {
       display: none;
       border: 1px solid #ccc;
-      padding: 10px;
-      margin: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 300px;
+      border-radius: 8px;
+      background-color: white;
     }
 
     .payment-form input {
-      margin: 5px;
+      margin: 8px 0;
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Pathway Extreme', sans-serif;
+      font-weight: 600;
+    }
+    .summary{
+        text-align: center;
+        font-family: 'Pathway Extreme', sans-serif;
+        font-size: 18px;
+        margin-top: 20px;
     }
   </style>
 </head>
@@ -138,27 +156,31 @@
   </div>
 </header>
 
-<h2 class="roboto-condensed" style="margin-top: 40px; font-family: 'Roboto Condensed', sans-serif; font-weight: 800; font-size: 32px; margin: 10px; text-align: center;">Payment</h2>
+<h2 class="roboto-condensed" style="margin-top: 40px;">Payment</h2>
 
-<p style="text-align: center;">
+<div class="summary">
   Items: 1 Donation <br>
   Quantity: 1 <br>
   Price: $10.00
-</p>
+</div>
 
 <div class="payment-method">
   Visa ending in 1234<br>
   <img src="payment.png" alt="Visa" style="width: 100px;">
 </div>
 
+<div style="text-align: center; margin-top: 10px;">
 <button onclick="showPaymentForm()">+ Add Payment Method</button>
+</div>
 
 <div id="paymentForm" class="payment-form">
-  <input type="text" placeholder="Card Number"><br>
-  <input type="text" placeholder="Expiry Date"><br>
-  <input type="text" placeholder="CVV"><br>
-  <input type="text" placeholder="Cardholder Name"><br>
+  <input type="text" placeholder="Card Number">
+  <input type="text" placeholder="Expiry Date">
+  <input type="text" placeholder="CVV">
+  <input type="text" placeholder="Cardholder Name">
+  <div style="text-align: center; margin-top: 10px;">
   <button onclick="addCard()">Add Card</button>
+  </div>
 </div>
 
 <div id="newCard" style="display: none;" class="payment-method">
