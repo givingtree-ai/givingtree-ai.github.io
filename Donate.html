@@ -86,7 +86,11 @@
 <body>
 
 <header>
-  Giving Tree
+  <div class="header-left">
+    <img src="logo.png" alt="Logo" style="width: 55px; height: 55px; padding: 10px;">
+    <span class="header-title">GIVING TREE</span>
+  </div>
+
   <div class="buttons">
     <a href="index.html" class="home">Home</a>
     <a href="Purchase.html">Purchase</a>
@@ -131,13 +135,4 @@
   });
 
   function saveAmount() {
-    const amount = document.getElementById('donationAmount').value;
-    if (amount) {
-      localStorage.setItem('donationAmount', amount);
-      window.location.href = 'payment.html';
-    }
-  }
-</script>
-
-</body>
-</html>
+    const amount = document.get
