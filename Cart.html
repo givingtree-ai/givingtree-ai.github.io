@@ -55,6 +55,7 @@
             text-align: center;
             margin-bottom: 20px;
             font-family: 'Londrina Solid', cursive;
+            font-size: 38px; /* Increased font size */
         }
 
         .cart-item {
@@ -63,6 +64,8 @@
             margin-bottom: 10px;
             border-bottom: 1px solid #ddd;
             position: relative;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Align items vertically in center */
         }
 
         .cart-item:hover .item-actions {
@@ -82,6 +85,31 @@
             margin-left: 5px;
             cursor: pointer;
         }
+
+        .cart-item img {
+            width: 50px; /* Product image size */
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .cart-item .item-details {
+            flex-grow: 1; /* Allow details to take up remaining space */
+        }
+
+        .cart-item .price-details {
+            text-align: right; /* Align price details to the right */
+        }
+
+        .cart-item .price-details .price-per-lb {
+            font-size: 12px; /* Smaller font for price per lb */
+            color: #888;
+        }
+
+        .cart-item .item-details p {
+            font-size: 18px; /* Increased font size */
+            margin: 5px 0;
+        }
+
         .weight-input-container {
             display: none;
             position: fixed;
@@ -154,13 +182,21 @@
         let editIndex = null;
 
         function displayCartItems() {
-            cartItemsDiv.innerHTML = ''; // Clear existing items
+            cartItemsDiv.innerHTML = '';
 
             cart.forEach((item, index) => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'cart-item';
                 itemDiv.innerHTML = `
-                    ${item.product} - ${item.weight} lbs - $${(item.weight * item.price).toFixed(2)}
+                    <img src="p${index + 1}.png" alt="${item.product}">
+                    <div class="item-details">
+                        <p>${item.product}</p>
+                        <p>Stock: ${Math.floor(Math.random() * 50) + 1} lbs</p>
+                    </div>
+                    <div class="price-details">
+                        <p>$${(item.weight * item.price).toFixed(2)}</p>
+                        <p class="price-per-lb">($${item.price} per lb)</p>
+                    </div>
                     <div class="item-actions">
                         <img src="editicon.png" alt="Edit" class="edit-item" data-index="${index}">
                         <img src="deleteicon.png" alt="Delete" class="delete-item" data-index="${index}">
@@ -169,7 +205,6 @@
                 cartItemsDiv.appendChild(itemDiv);
             });
 
-            // Add event listeners for edit and delete icons
             document.querySelectorAll('.edit-item').forEach(editIcon => {
                 editIcon.addEventListener('click', function() {
                     editIndex = this.dataset.index;
@@ -182,7 +217,7 @@
                 deleteIcon.addEventListener('click', function() {
                     cart.splice(this.dataset.index, 1);
                     localStorage.setItem('cart', JSON.stringify(cart));
-                    displayCartItems(); // Refresh the cart display
+                    displayCartItems();
                 });
             });
         }
