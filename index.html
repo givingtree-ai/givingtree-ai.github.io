@@ -27,15 +27,28 @@
 
 
       header {
-        background-color: #333;
-        color: white;
-        padding: 15px;
-        font-size: 30px;
-        display: flex;
-        align-items: center;
-        border-radius: 6px; /* 👈 Rounded corners */
-        margin: 20px; /* 👈 Optional: adds space around the header so corners show */
-      }
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between; /* Spreads left and right */
+  align-items: center;
+  border-radius: 6px;
+  margin: 20px;
+}
+
+/* LEFT side: logo + title */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  margin-left: 12px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 800;
+}
 
             .buttons a {
           color: white;
