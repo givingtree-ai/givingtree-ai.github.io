@@ -94,12 +94,18 @@
 
         .payment-method {
             margin-top: 20px;
+            display: flex;
+            align-items: center;
         }
 
         .payment-method img {
-            width: 120px;
-            height: 70px;
+            width: 20px;
+            height: 20px;
             margin-right: 10px;
+        }
+        .payment-method p{
+            margin-right:10px;
+            font-family: 'Pathway Extreme', sans-serif;
         }
 
         .add-payment-container {
@@ -146,7 +152,10 @@
         #confirm-payment:hover {
             background-color: #218838;
         }
-
+        .payment-select{
+            display: flex;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -178,10 +187,19 @@
         <p>Total: $16.00</p>
     </div>
 
-    <div class="payment-method">
-        <h3>Current Payment Method:</h3>
-        <p>Visa ending in 1234</p>
-        <img src="payment.png" alt="Visa Payment">
+    <div class="payment-select">
+        <input type="radio" id="visaRadio" name="paymentOption" value="visa" checked>
+        <div class="payment-method">
+            <img src="payment.png" alt="Visa Payment">
+            <p>Visa ending in 1234</p>
+        </div>
+    </div>
+    <div id="newCardDiv" style="display:none" class="payment-select">
+        <input type="radio" id="mastercardRadio" name="paymentOption" value="mastercard">
+        <div class="payment-method">
+            <img src="payment.png" alt="Mastercard Payment">
+            <p id="mastercardText"></p>
+        </div>
     </div>
 
     <div class="add-payment-container">
@@ -211,8 +229,9 @@
         const addCardBtn = document.getElementById('addCardBtn');
         const confirmOrder = document.getElementById('confirmOrder');
         const confirmPayment = document.getElementById('confirmPayment');
-        const paymentMethod = document.querySelector('.payment-method');
-        
+        const newCardDiv = document.getElementById('newCardDiv');
+        const mastercardText = document.getElementById('mastercardText');
+
         addPaymentBtn.addEventListener('click', function () {
             paymentForm.style.display = 'block';
         });
@@ -221,11 +240,8 @@
             const cardNumber = document.getElementById('card-number').value;
             const cardholderName = document.getElementById('cardholder-name').value;
             if (cardNumber && cardholderName) {
-                paymentMethod.innerHTML = `
-                    <h3>Current Payment Method:</h3>
-                    <p>Mastercard ending in ${cardNumber.slice(-4)}</p>
-                    <img src="payment.png" alt="Mastercard Payment">
-                `;
+                mastercardText.innerHTML = `Mastercard ending in ${cardNumber.slice(-4)}`;
+                newCardDiv.style.display = 'flex';
                 paymentForm.style.display = 'none';
             }
         });
