@@ -98,9 +98,8 @@
             margin-top: 20px;
             display: flex;
             align-items: center;
-            justify-content: center; /* Center horizontally */
-            margin-left: 0; /* Remove left margin */
-            text-align: center; /* Center text */
+            justify-content: center;
+            text-align: center;
         }
 
         .payment-method img {
@@ -147,11 +146,17 @@
             margin-top:20px;
             text-align: center;
         }
+        .payment-select-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
         .payment-select{
             display: flex;
             align-items: center;
-            justify-content: center; /* Center horizontally */
-            text-align: center; /* Center text */
+            justify-content: center;
+            text-align: center;
+            margin: 10px;
         }
     </style>
 </head>
@@ -184,18 +189,20 @@
         <p>Total: $16.00</p>
     </div>
 
-    <div class="payment-select">
-        <input type="radio" id="visaRadio" name="paymentOption" value="visa" checked>
-        <div class="payment-method">
-            <img src="payment.png" alt="Visa Payment">
-            <p>Visa ending in 1234</p>
+    <div class="payment-select-container">
+        <div class="payment-select">
+            <input type="radio" id="visaRadio" name="paymentOption" value="visa" checked>
+            <div class="payment-method">
+                <img src="payment.png" alt="Visa Payment">
+                <p>Visa ending in 1234</p>
+            </div>
         </div>
-    </div>
-    <div id="newCardDiv" style="display:none" class="payment-select">
-        <input type="radio" id="mastercardRadio" name="paymentOption" value="mastercard">
-        <div class="payment-method">
-            <img src="payment.png" alt="Mastercard Payment">
-            <p id="mastercardText"></p>
+        <div id="newCardDiv" style="display:none" class="payment-select">
+            <input type="radio" id="mastercardRadio" name="paymentOption" value="mastercard">
+            <div class="payment-method">
+                <img src="payment.png" alt="Mastercard Payment">
+                <p id="mastercardText"></p>
+            </div>
         </div>
     </div>
 
