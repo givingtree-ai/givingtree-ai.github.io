@@ -223,7 +223,7 @@
             const cardNumber = document.getElementById('card-number').value;
             const cardholderName = document.getElementById('cardholder-name').value;
             if (cardNumber && cardholderName) {
-                mastercardText.innerHTML = `Mastercard ending in ${cardNumber.slice(-4)}`;
+                mastercardText.innerHTML = `Visa ending in ${cardNumber.slice(-4)}`;
                 newCardDiv.style.display = 'flex';
                 paymentForm.style.display = 'none';
             }
