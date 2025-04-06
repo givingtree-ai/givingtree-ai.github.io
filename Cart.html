@@ -1,372 +1,372 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Your Cart</title>
-     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@600&display=swap" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@300&display=swap" rel="stylesheet">
-     <style>
-         .roboto-condensed {
-             font-family: 'Roboto Condensed', sans-serif;
-             font-weight: 800;
-         }
- 
-         .pathway-extreme-light {
-             font-family: "Pathway Extreme", sans-serif;
-             font-optical-sizing: auto;
-             font-weight: 300;
-             font-style: normal;
-             font-variation-settings: "wdth" 100;
-         }
- 
-         body {
-             font-family: "Roboto Condensed", sans-serif;
-             background-color: #B5C99A;
-             margin: 0;
-             padding: 20px;
-         }
- 
-         header {
-             background-color: #333;
-             color: white;
-             padding: 5px;
-             padding: 0px;
-             font-size: 30px;
-             display: flex;
-             justify-content: space-between;
-             align-items: center;
-             border-radius: 6px;
-             margin: 10px;
-         }
- 
-         .header-left {
-             display: flex;
-             align-items: center;
-         }
- 
-         .header-title {
-             margin-left: 12px;
-             font-family: 'Roboto Condensed', sans-serif;
-             font-weight: 800;
-         }
- 
-         .buttons {
-             display: flex;
-             gap: 10px;
-         }
- 
-         .buttons a {
-             color: white;
-             text-decoration: none;
-             padding: 8px 12px;
-             background: none;
-             border: none;
-             font-family: 'Roboto Condensed', sans-serif;
-             font-weight: 600;
-             font-size: inherit;
-             display: flex;
-             align-items: center;
-         }
- 
-         .buttons a:hover,
-         .buttons a.active {
-             text-decoration: underline;
-         }
- 
-         h2 {
-             text-align: center;
-             margin-bottom: 20px;
-             font-family: 'Roboto Condensed', sans-serif;
-             font-size: 38px;
-         }
- 
-         .cart-item {
-             background-color: white;
-             padding: 15px;
-             margin-bottom: 15px;
-             border-bottom: 1px solid #ddd;
-             position: relative;
-             display: flex;
-             align-items: center;
-             margin-left: 20px;
-             margin-right: 20px;
-             border-radius: 6px;
-         }
- 
-         .cart-item:hover .item-actions {
-             display: block;
-         }
- 
-         .item-actions {
-             display: none;
-             position: absolute;
-             top: 5px;
-             right: 5px;
-         }
- 
-         .item-actions img {
-             width: 17px;
-             height: 17px;
-             margin-left: 5px;
-             cursor: pointer;
-         }
- 
-         .cart-item img {
-             width: 90px;
-             height: 90px;
-             margin-right: 15px;
-             border-radius: 6px;
-         }
- 
-         .cart-item .item-details {
-             flex-grow: 1;
-         }
- 
-         .cart-item .price-details {
-             text-align: right;
-         }
- 
-         .cart-item .price-details .price-per-lb {
-             font-size: 12px;
-             color: #888;
-         }
- 
-         .cart-item .item-details p {
-             font-size: 18px;
-             margin: 5px 0;
-         }
- 
-         .cart-item .item-details .stock {
-             font-size: 12px;
-             color: #888;
-         }
- 
-         .weight-input-container {
-             display: none;
-             position: fixed;
-             top: 50%;
-             left: 50%;
-             transform: translate(-50%, -50%);
-             background-color: white;
-             padding: 20px;
-             border-radius: 8px;
-             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-             z-index: 1000;
-         }
- 
-         .weight-input-container input,
-         #address-form input,
-         #address-form textarea {
-             padding: 8px;
-             margin-bottom: 10px;
-             border: 1px solid #ccc;
-             border-radius: 4px;
-             font-family: 'Roboto Condensed', sans-serif;
-         }
- 
-         .weight-input-container button {
-             padding: 8px 16px;
-             background-color: #28a745;
-             color: white;
-             border: none;
-             border-radius: 5px;
-             cursor: pointer;
-         }
- 
-         .weight-input-container button:hover {
-             background-color: #218838;
-         }
- 
-         .weight-input-container .cancel {
-             background-color: #888;
-         }
- 
-         .weight-input-container .cancel:hover {
-             background-color: #666;
-         }
- 
-         #total-checkout {
-             display: flex;
-             justify-content: flex-end;
-             align-items: center;
-             margin-top: 20px;
-             margin-left: 20px;
-             margin-right: 20px;
-         }
- 
-         #total {
-             font-size: 20px;
-             text-align: right;
-             margin-right: 15px;
-             flex-grow: 0;
-         }
- 
-         #checkout {
-             background-color: #28a745;
-             color: white;
-             padding: 10px 20px;
-             border: none;
-             border-radius: 5px;
-             font-size: 16px;
-             cursor: pointer;
-             font-family: 'Roboto Condensed', sans-serif;
-             margin-top: 20px;
-         }
- 
-         #checkout:hover {
-             background-color: #218838;
-         }
- 
-         #pickup-delivery {
-             margin-top: 20px;
-             margin-left: 20px;
-             margin-right: 20px;
-         }
- 
-         #address-form {
-             display: none;
-             margin-top: 10px;
-         }
-     </style>
- </head>
- <body>
-     <header>
-         <div class="header-left">
-             <img src="logo.png" alt="Logo" style="width: 55px; height: 55px; padding: 10px;">
-             <span class="header-title">GIVING TREE</span>
-         </div>
-         <div class="buttons">
-             <a href="index.html" class="home">Home</a>
-             <a href="Purchase.html">Purchase</a>
-             <a href="Donate.html">Donate</a>
-             <a href="Volunteer.html">Volunteer</a>
-             <a href="Cart.html">
-                 <img src="carticon.png" alt="Cart" style="width: 55px; height: 55px;">
-             </a>
-             <a href="userdashboard.html">
-                 <img src="usericon.png" alt="User Profile" style="width: 55px; height: 55px;">
-             </a>
-         </div>
-     </header>
- 
-     <h2>Your Shopping Cart</h2>
- 
-     <div id="cartItems"></div>
- 
-     <div id="total-checkout">
-         <div id="total"></div>
-     </div>
- 
-     <div id="pickup-delivery">
-         <input type="radio" id="pickup" name="delivery" value="pickup" checked>
-         <label for="pickup">I will pickup from the Milpitas warehouse</label><br>
-         <input type="radio" id="delivery" name="delivery" value="delivery">
-         <label for="delivery">Delivery</label>
-         <div id="address-form">
-             <input type="text" id="street" placeholder="Street Address">
-             <input type="text" id="city" placeholder="City">
-             <input type="text" id="state" placeholder="State">
-             <input type="text" id="zip" placeholder="ZIP Code">
-         </div>
-     </div>
- 
-     <button id="checkout" style="margin-right: 5px;">Go to Payment</button>
- 
-     <div class="weight-input-container" id="weightInputContainer">
-         <input type="number" id="weightInput" placeholder="Enter weight (lbs)">
-         <button id="confirmWeight">Confirm</button>
-         <button id="cancelWeight" class="cancel">Cancel</button>
-     </div>
- 
-     <script>
-         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-         const cartItemsDiv = document.getElementById('cartItems');
-         const weightInputContainer = document.getElementById('weightInputContainer');
-         const weightInput = document.getElementById('weightInput');
-         const confirmWeight = document.getElementById('confirmWeight');
-         const cancelWeight = document.getElementById('cancelWeight');
-         let editIndex = null;
-         const imageFiles = ['p1.png', 'p2.png', 'p3.png', 'p4.png', 'p5.png', 'p6.png', 'p7.png', 'p8.png', 'p9.png', 'p10.png', 'p11.png', 'p12.png', 'p13.png', 'p14.png', 'p15.png', 'p16.png'];
-         const stockAmounts = [20, 15, 30, 25, 18, 22, 10, 12, 28, 19, 14, 16, 8, 9, 21, 17];
-         const deliveryRadio = document.getElementById('delivery');
-         const addressForm = document.getElementById('address-form');
- 
-         deliveryRadio.addEventListener('change', function () {
-             addressForm.style.display = this.checked ? 'block' : 'none';
-         });
- 
-         function displayCartItems() {
-             cartItemsDiv.innerHTML = '';
-             let cartTotal = 0;
- 
-             cart.forEach((item, index) => {
-                 const itemDiv = document.createElement('div');
-                 itemDiv.className = 'cart-item';
-                 const itemTotal = (item.weight * item.price).toFixed(2);
-                 itemDiv.innerHTML = `
-                     <img src="${imageFiles[index]}" alt="${item.product}">
-                     <div class="item-details">
-                         <p>${item.product}</p>
-                         <p>${item.weight} lbs in cart</p>
-                         <p class="stock">${stockAmounts[index]} lbs in stock</p>
-                     </div>
-                     <div class="price-details">
-                         <p>$${itemTotal}</p>
-                         <p class="price-per-lb">($${item.price} per lb)</p>
-                     </div>
-                     <div class="item-actions">
-                         <img src="editicon.png" alt="Edit" class="edit-item" data-index="${index}">
-                         <img src="deleteicon.png" alt="Delete" class="delete-item" data-index="${index}">
-                     </div>
-                 `;
-                 cartItemsDiv.appendChild(itemDiv);
-                 cartTotal += parseFloat(itemTotal);
-             });
-             document.getElementById('total').innerHTML = `Total: $${cartTotal.toFixed(2)}`;
-             localStorage.setItem('cartTotal', cartTotal.toFixed(2));
- 
-             document.querySelectorAll('.edit-item').forEach(editIcon => {
-                 editIcon.addEventListener('click', function () {
-                     editIndex = this.dataset.index;
-                     weightInput.value = cart[editIndex].weight;
-                     weightInputContainer.style.display = 'block';
-                 });
-             });
- 
-             document.querySelectorAll('.delete-item').forEach(deleteIcon => {
-                 deleteIcon.addEventListener('click', function () {
-                     cart.splice(this.dataset.index, 1);
-                     localStorage.setItem('cart', JSON.stringify(cart));
-                     displayCartItems();
-                 });
-             });
-         }
- 
-         displayCartItems();
- 
-         confirmWeight.addEventListener('click', function () {
-             const weight = parseFloat(weightInput.value);
-             if (weight > 0) {
-                 cart[editIndex].weight = weight;
-                 localStorage.setItem('cart', JSON.stringify(cart));
-                 weightInputContainer.style.display = 'none';
-                 weightInput.value = '';
-                 displayCartItems();
-             } else {
-                 alert('Please enter a valid weight.');
-             }
-         });
- 
-         cancelWeight.addEventListener('click', function () {
-             weightInputContainer.style.display = 'none';
-             weightInput.value = '';
-         });
- 
-         document.getElementById('checkout').addEventListener('click', function () {
-             window.location.href = 'Payment.html';
-         });
-     </script>
- </body>
- </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@300&display=swap" rel="stylesheet">
+    <style>
+        .roboto-condensed {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 800;
+        }
+
+        .pathway-extreme-light {
+            font-family: "Pathway Extreme", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+        }
+
+        body {
+            font-family: "Roboto Condensed", sans-serif;
+            background-color: #B5C99A;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            padding: 0px;
+            font-size: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 6px;
+            margin: 10px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-title {
+            margin-left: 12px;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 800;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            background: none;
+            border: none;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 600;
+            font-size: inherit;
+            display: flex;
+            align-items: center;
+        }
+
+        .buttons a:hover,
+        .buttons a.active {
+            text-decoration: underline;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 38px;
+        }
+
+        .cart-item {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            margin-right: 20px;
+            border-radius: 6px;
+        }
+
+        .cart-item:hover .item-actions {
+            display: block;
+        }
+
+        .item-actions {
+            display: none;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
+        .cart-item .product-thumbnail {
+            width: 90px;
+            height: 90px;
+            margin-right: 15px;
+            border-radius: 6px;
+        }
+
+        .cart-item .action-icon {
+            width: 17px;
+            height: 17px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .cart-item .item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item .price-details {
+            text-align: right;
+        }
+
+        .cart-item .price-details .price-per-lb {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .cart-item .item-details p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .cart-item .item-details .stock {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .weight-input-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .weight-input-container input,
+        #address-form input,
+        #address-form textarea {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .weight-input-container button {
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .weight-input-container button:hover {
+            background-color: #218838;
+        }
+
+        .weight-input-container .cancel {
+            background-color: #888;
+        }
+
+        .weight-input-container .cancel:hover {
+            background-color: #666;
+        }
+
+        #total-checkout {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        #total {
+            font-size: 20px;
+            text-align: right;
+            margin-right: 15px;
+            flex-grow: 0;
+        }
+
+        #checkout {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'Roboto Condensed', sans-serif;
+            margin-top: 20px;
+        }
+
+        #checkout:hover {
+            background-color: #218838;
+        }
+
+        #pickup-delivery {
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        #address-form {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="logo.png" alt="Logo" style="width: 55px; height: 55px; padding: 10px;">
+            <span class="header-title">GIVING TREE</span>
+        </div>
+        <div class="buttons">
+            <a href="index.html" class="home">Home</a>
+            <a href="Purchase.html">Purchase</a>
+            <a href="Donate.html">Donate</a>
+            <a href="Volunteer.html">Volunteer</a>
+            <a href="Cart.html">
+                <img src="carticon.png" alt="Cart" style="width: 55px; height: 55px;">
+            </a>
+            <a href="userdashboard.html">
+                <img src="usericon.png" alt="User Profile" style="width: 55px; height: 55px;">
+            </a>
+        </div>
+    </header>
+
+    <h2>Your Shopping Cart</h2>
+
+    <div id="cartItems"></div>
+
+    <div id="total-checkout">
+        <div id="total"></div>
+    </div>
+
+    <div id="pickup-delivery">
+        <input type="radio" id="pickup" name="delivery" value="pickup" checked>
+        <label for="pickup">I will pickup from the Milpitas warehouse</label><br>
+        <input type="radio" id="delivery" name="delivery" value="delivery">
+        <label for="delivery">Delivery</label>
+        <div id="address-form">
+            <input type="text" id="street" placeholder="Street Address">
+            <input type="text" id="city" placeholder="City">
+            <input type="text" id="state" placeholder="State">
+            <input type="text" id="zip" placeholder="ZIP Code">
+        </div>
+    </div>
+
+    <button id="checkout" style="margin-right: 5px;">Go to Payment</button>
+
+    <div class="weight-input-container" id="weightInputContainer">
+        <input type="number" id="weightInput" placeholder="Enter weight (lbs)">
+        <button id="confirmWeight">Confirm</button>
+        <button id="cancelWeight" class="cancel">Cancel</button>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsDiv = document.getElementById('cartItems');
+        const weightInputContainer = document.getElementById('weightInputContainer');
+        const weightInput = document.getElementById('weightInput');
+        const confirmWeight = document.getElementById('confirmWeight');
+        const cancelWeight = document.getElementById('cancelWeight');
+        let editIndex = null;
+        const imageFiles = ['p1.png', 'p2.png', 'p3.png', 'p4.png', 'p5.png', 'p6.png', 'p7.png', 'p8.png', 'p9.png', 'p10.png', 'p11.png', 'p12.png', 'p13.png', 'p14.png', 'p16.png'];
+        const stockAmounts = [20, 15, 30, 25, 18, 22, 10, 12, 28, 19, 14, 16, 8, 9, 21, 17];
+        const deliveryRadio = document.getElementById('delivery');
+        const addressForm = document.getElementById('address-form');
+
+        deliveryRadio.addEventListener('change', function () {
+            addressForm.style.display = this.checked ? 'block' : 'none';
+        });
+
+        function displayCartItems() {
+            cartItemsDiv.innerHTML = '';
+            let cartTotal = 0;
+
+            cart.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                const itemTotal = (item.weight * item.price).toFixed(2);
+                itemDiv.innerHTML = `
+                    <img src="${imageFiles[index]}" alt="${item.product}" class="product-thumbnail">
+                    <div class="item-details">
+                        <p>${item.product}</p>
+                        <p>${item.weight} lbs in cart</p>
+                        <p class="stock">${stockAmounts[index]} lbs in stock</p>
+                    </div>
+                    <div class="price-details">
+                        <p>$${itemTotal}</p>
+                        <p class="price-per-lb">($${item.price} per lb)</p>
+                    </div>
+                    <div class="item-actions">
+                        <img src="editicon.png" alt="Edit" class="edit-item action-icon" data-index="${index}">
+                        <img src="deleteicon.png" alt="Delete" class="delete-item action-icon" data-index="${index}">
+                    </div>
+                `;
+                cartItemsDiv.appendChild(itemDiv);
+                cartTotal += parseFloat(itemTotal);
+            });
+            document.getElementById('total').innerHTML = `Total: $${cartTotal.toFixed(2)}`;
+            localStorage.setItem('cartTotal', cartTotal.toFixed(2));
+
+            document.querySelectorAll('.edit-item').forEach(editIcon => {
+                editIcon.addEventListener('click', function () {
+                    editIndex = this.dataset.index;
+                    weightInput.value = cart[editIndex].weight;
+                    weightInputContainer.style.display = 'block';
+                });
+            });
+
+            document.querySelectorAll('.delete-item').forEach(deleteIcon => {
+                deleteIcon.addEventListener('click', function () {
+                    cart.splice(this.dataset.index, 1);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    displayCartItems();
+                });
+            });
+        }
+
+        displayCartItems();
+
+        confirmWeight.addEventListener('click', function () {
+            const weight = parseFloat(weightInput.value);
+            if (weight > 0) {
+                cart[editIndex].weight = weight;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                weightInputContainer.style.display = 'none';
+                weightInput.value = '';
+                displayCartItems();
+            } else {
+                alert('Please enter a valid weight.');
+            }
+        });
+
+        cancelWeight.addEventListener('click', function () {
+            weightInputContainer.style.display = 'none';
+            weightInput.value = '';
+        });
+
+        document.getElementById('checkout').addEventListener('click', function () {
+            window.location.href = 'Payment.html';
+        });
+    </script>
+</body>
+</html>
