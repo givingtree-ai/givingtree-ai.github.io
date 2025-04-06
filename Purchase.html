@@ -325,57 +325,7 @@
     </div>
   </div>
 </div>
-<script>
-  const cart = [];
-  let selectedItem = null;
 
-  document.querySelectorAll(".item").forEach((item) => {
-    item.addEventListener("click", () => {
-      selectedItem = {
-        name: item.getAttribute("data-name"),
-        image: item.getAttribute("data-image"),
-        pricePerKg: parseFloat(item.getAttribute("data-price")),
-      };
-      document.getElementById("weightPopup").style.display = "flex";
-    });
-  });
-
-  document.getElementById("confirmWeight").addEventListener("click", () => {
-    const weight = parseFloat(document.getElementById("weightInput").value);
-    if (!isNaN(weight) && selectedItem) {
-      const total = selectedItem.pricePerKg * weight;
-      const cartItem = {
-        ...selectedItem,
-        weight,
-        total,
-      };
-      cart.push(cartItem);
-
-      // 👉 Create and add item to the cart display list
-      const li = document.createElement("li");
-      li.innerHTML = `
-        <img src="${cartItem.image}" alt="${cartItem.name}">
-        <div>
-          <p><strong>${cartItem.name}</strong></p>
-          <p>Weight: ${cartItem.weight} kg</p>
-          <p>Total: $${cartItem.total.toFixed(2)}</p>
-        </div>
-      `;
-      document.getElementById("cartItems").appendChild(li);
-
-      // Reset popup
-      document.getElementById("weightPopup").style.display = "none";
-      document.getElementById("weightInput").value = "";
-      selectedItem = null;
-    }
-  });
-
-  document.getElementById("cancelWeight").addEventListener("click", () => {
-    document.getElementById("weightPopup").style.display = "none";
-    document.getElementById("weightInput").value = "";
-    selectedItem = null;
-  });
-</script>
 
 
 </body>
