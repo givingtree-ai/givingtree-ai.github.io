@@ -82,11 +82,18 @@
             position: absolute;
             width: 100%;
             transition: transform 0.5s ease-in-out;
-            transform: translateX(100%);
         }
 
         .slide.active-slide {
             transform: translateX(0);
+        }
+
+        .slide.prev-slide {
+            transform: translateX(-100%);
+        }
+
+        .slide.next-slide {
+            transform: translateX(100%);
         }
 
         .slide img {
@@ -230,8 +237,13 @@
 
         function showSlide(index) {
             slides.forEach((slide, i) => {
-                slide.classList.remove("active-slide");
+                slide.classList.remove("active-slide", "prev-slide", "next-slide");
                 dots[i].classList.remove("active");
+                if(i < index){
+                    slide.classList.add("prev-slide");
+                } else if (i > index) {
+                    slide.classList.add("next-slide");
+                }
             });
             slides[index].classList.add("active-slide");
             dots[index].classList.add("active");
