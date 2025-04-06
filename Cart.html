@@ -367,6 +367,11 @@
         document.getElementById('checkout').addEventListener('click', function () {
             window.location.href = 'Payment.html';
         });
+        // Example (adjust to your cart page's data structure)
+        function goToPayment() {
+            let cartItems = JSON.stringify(yourCartItems); // yourCartItems is an array of objects
+            window.location.href = `payment.html?cartItems=${encodeURIComponent(cartItems)}`;
+        }
     </script>
 </body>
 </html>
