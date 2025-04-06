@@ -132,6 +132,10 @@
         font-size: 18px;
         margin-top: 20px;
     }
+    .item-list{
+        text-align: left;
+        margin: 10px;
+    }
   </style>
 </head>
 <body>
@@ -158,11 +162,8 @@
 
 <h2 class="roboto-condensed" style="margin-top: 40px;">Payment</h2>
 
-<div class="summary">
-  Items: 1 Donation <br>
-  Quantity: 1 <br>
-  Price: $10.00
-</div>
+<div id="summary" class="summary">
+  </div>
 
 <div class="payment-method">
   Visa ending in 1234<br>
@@ -193,6 +194,39 @@
 </div>
 
 <script>
+
+  function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+
+  function displaySummary() {
+    let summaryDiv = document.getElementById('summary');
+    let cartItems = getParameterByName('cartItems');
+    let donationAmount = getParameterByName('donationAmount');
+
+    if(cartItems){
+        let items = JSON.parse(cartItems);
+        let itemsHTML = "";
+        let totalPrice = 0;
+        items.forEach(item =>{
+            itemsHTML += `<div class="item-list">${item.name} - ${item.weight} - $${item.price}</div>`;
+            totalPrice += parseFloat(item.price);
+        });
+        summaryDiv.innerHTML = itemsHTML + `<br> Total: $${totalPrice.toFixed(2)}`;
+    } else if (donationAmount){
+        summaryDiv.innerHTML = `Donation: $${donationAmount}`;
+    } else {
+        summaryDiv.innerHTML = "Items: 1 Donation <br> Quantity: 1 <br> Price: $10.00";
+    }
+  }
+
+  displaySummary();
+
   function showPaymentForm() {
     document.getElementById('paymentForm').style.display = 'block';
   }
