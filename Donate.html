@@ -34,11 +34,24 @@
     header {
       background-color: #333;
       color: white;
-      padding: 15px;
-      font-size: 24px;
+      padding: 5px;
+      font-size: 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-radius: 6px;
+      margin: 20px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-title {
+      margin-left: 12px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 800;
     }
 
     .buttons {
@@ -52,8 +65,11 @@
       padding: 8px 12px;
       background: none;
       border: none;
-      font-family: inherit;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 600;
       font-size: inherit;
+      display: flex;
+      align-items: center;
     }
 
     .buttons a:hover {
@@ -97,10 +113,10 @@
     <a href="Donate.html">Donate</a>
     <a href="Volunteer.html">Volunteer</a>
     <a href="Cart.html">
-      <img src="carticon.png" alt="Cart" style="width: 30px; height: 30px;">
+      <img src="carticon.png" alt="Cart" style="width: 55px; height: 55px;">
     </a>
     <a href="userdashboard.html">
-      <img src="usericon.png" alt="User Profile" style="width: 30px; height: 30px;">
+      <img src="usericon.png" alt="User Profile" style="width: 55px; height: 55px;">
     </a>
   </div>
 </header>
@@ -135,4 +151,10 @@
   });
 
   function saveAmount() {
-    const amount = document.get
+    const amount = document.getElementById('donationAmount').value;
+    alert(`You have chosen to donate $${amount}`);
+  }
+</script>
+
+</body>
+</html>
