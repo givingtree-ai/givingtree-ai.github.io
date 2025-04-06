@@ -166,7 +166,7 @@
         }
         #total{
             font-size: 20px;
-            text-align: right;
+            text-align: left;
             flex-grow: 1;
         }
         #checkout{
@@ -178,6 +178,7 @@
             font-size: 16px;
             cursor: pointer;
             font-family: 'Roboto Condensed', sans-serif;
+            margin-top: 10px;
         }
         #checkout:hover{
             background-color: #218838;
@@ -236,12 +237,13 @@
             <input type="text" id="state" placeholder="State">
             <input type="text" id="zip" placeholder="ZIP Code">
             <textarea id="notes" placeholder="Delivery Notes (optional)"></textarea>
+            <button id="checkout">Go to Payment</button>
         </div>
     </div>
 
     <div id="total-checkout">
         <div id="total"></div>
-        <button id="checkout">Go to Payment</button>
+
     </div>
 
     <div class="weight-input-container" id="weightInputContainer">
