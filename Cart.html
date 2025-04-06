@@ -10,6 +10,16 @@
     <style>
         /* ... (Your existing styles) ... */
 
+        .buttons a img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .item-actions img {
+            width: 30px;
+            height: 30px;
+        }
+
         #address-form {
             display: none;
             margin-top: 10px;
@@ -29,7 +39,23 @@
 </head>
 <body>
     <header>
-        </header>
+        <div class="header-left">
+            <img src="logo.png" alt="Logo" style="width: 55px; height: 55px; padding: 10px;">
+            <span class="header-title">GIVING TREE</span>
+        </div>
+        <div class="buttons">
+            <a href="index.html" class="home">Home</a>
+            <a href="Purchase.html">Purchase</a>
+            <a href="Donate.html">Donate</a>
+            <a href="Volunteer.html">Volunteer</a>
+            <a href="Cart.html">
+                <img src="carticon.png" alt="Cart">
+            </a>
+            <a href="userdashboard.html">
+                <img src="usericon.png" alt="User Profile">
+            </a>
+        </div>
+    </header>
 
     <h2>Your Shopping Cart</h2>
 
@@ -56,7 +82,10 @@
     <button id="checkout" style="margin-right: 5px;">Go to Payment</button>
 
     <div class="weight-input-container" id="weightInputContainer">
-        </div>
+        <input type="number" id="weightInput" placeholder="Enter weight (lbs)">
+        <button id="confirmWeight">Confirm</button>
+        <button id="cancelWeight" class="cancel">Cancel</button>
+    </div>
 
     <script>
         // ... (Your existing JavaScript) ...
