@@ -158,7 +158,7 @@
         }
         #total-checkout{
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* Align to the right */
             align-items: center;
             margin-top: 20px;
             margin-left: 20px;
@@ -166,8 +166,8 @@
         }
         #total{
             font-size: 20px;
-            text-align: left;
-            flex-grow: 1;
+            text-align: right;
+            flex-grow: 0; /* Don't let it grow */
         }
         #checkout{
             background-color: #28a745;
@@ -179,6 +179,7 @@
             cursor: pointer;
             font-family: 'Roboto Condensed', sans-serif;
             margin-top: 10px;
+            margin-left: 10px; /* Add space between total and button */
         }
         #checkout:hover{
             background-color: #218838;
@@ -226,6 +227,11 @@
     <div id="cartItems">
     </div>
 
+    <div id="total-checkout">
+        <div id="total"></div>
+        <button id="checkout">Go to Payment</button>
+    </div>
+
     <div id="pickup-delivery">
         <input type="radio" id="pickup" name="delivery" value="pickup" checked>
         <label for="pickup">I will pickup from the Milpitas warehouse</label><br>
@@ -237,13 +243,7 @@
             <input type="text" id="state" placeholder="State">
             <input type="text" id="zip" placeholder="ZIP Code">
             <textarea id="notes" placeholder="Delivery Notes (optional)"></textarea>
-            <button id="checkout">Go to Payment</button>
         </div>
-    </div>
-
-    <div id="total-checkout">
-        <div id="total"></div>
-
     </div>
 
     <div class="weight-input-container" id="weightInputContainer">
