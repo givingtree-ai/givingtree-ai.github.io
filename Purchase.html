@@ -326,65 +326,54 @@
   </div>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.add-to-cart');
+  const cart = [];
+  let selectedItem = null;
 
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        if (button.nextElementSibling?.classList.contains('weight-input')) {
-          return; // Already showing input
-        }
-
-        const input = document.createElement('input');
-        input.type = 'number';
-        input.step = '0.1';
-        input.min = '1';
-        input.max = '20';
-        input.placeholder = 'lbs (1–20)';
-        input.className = 'weight-input';
-        input.style.marginTop = '8px';
-        input.style.padding = '6px';
-        input.style.borderRadius = '4px';
-        input.style.border = '1px solid #ccc';
-        input.style.fontFamily = 'Pathway Extreme, sans-serif';
-
-        const confirmBtn = document.createElement('button');
-        confirmBtn.textContent = 'Confirm';
-        confirmBtn.style.marginTop = '6px';
-        confirmBtn.style.padding = '6px 12px';
-        confirmBtn.style.backgroundColor = '#007BFF';
-        confirmBtn.style.color = 'white';
-        confirmBtn.style.border = 'none';
-        confirmBtn.style.borderRadius = '4px';
-        confirmBtn.style.cursor = 'pointer';
-        confirmBtn.style.fontWeight = '600';
-        confirmBtn.style.display = 'block';
-
-        confirmBtn.addEventListener('click', () => {
-          const weight = parseFloat(input.value);
-          if (isNaN(weight) || weight < 1 || weight > 20) {
-            alert('Please enter a valid weight between 1 and 20 lbs.');
-            return;
-          }
-
-          const tile = button.closest('.product-tile');
-          const name = tile.querySelector('.product-name').textContent;
-          const price = parseFloat(tile.querySelector('.price').textContent.replace('$', '').replace('/lb', ''));
-          const image = tile.querySelector('img').getAttribute('src');
-
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
-          cart.push({ name, weight, price, image });
-          localStorage.setItem('cart', JSON.stringify(cart));
-
-          input.remove();
-          confirmBtn.remove();
-          alert(`${name} (${weight} lbs) added to cart.`);
-        });
-
-        button.insertAdjacentElement('afterend', input);
-        input.insertAdjacentElement('afterend', confirmBtn);
-      });
+  document.querySelectorAll(".item").forEach((item) => {
+    item.addEventListener("click", () => {
+      selectedItem = {
+        name: item.getAttribute("data-name"),
+        image: item.getAttribute("data-image"),
+        pricePerKg: parseFloat(item.getAttribute("data-price")),
+      };
+      document.getElementById("weightPopup").style.display = "flex";
     });
+  });
+
+  document.getElementById("confirmWeight").addEventListener("click", () => {
+    const weight = parseFloat(document.getElementById("weightInput").value);
+    if (!isNaN(weight) && selectedItem) {
+      const total = selectedItem.pricePerKg * weight;
+      const cartItem = {
+        ...selectedItem,
+        weight,
+        total,
+      };
+      cart.push(cartItem);
+
+      // 👉 Create and add item to the cart display list
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <img src="${cartItem.image}" alt="${cartItem.name}">
+        <div>
+          <p><strong>${cartItem.name}</strong></p>
+          <p>Weight: ${cartItem.weight} kg</p>
+          <p>Total: $${cartItem.total.toFixed(2)}</p>
+        </div>
+      `;
+      document.getElementById("cartItems").appendChild(li);
+
+      // Reset popup
+      document.getElementById("weightPopup").style.display = "none";
+      document.getElementById("weightInput").value = "";
+      selectedItem = null;
+    }
+  });
+
+  document.getElementById("cancelWeight").addEventListener("click", () => {
+    document.getElementById("weightPopup").style.display = "none";
+    document.getElementById("weightInput").value = "";
+    selectedItem = null;
   });
 </script>
 
