@@ -325,53 +325,6 @@
     </div>
   </div>
 </div>
-<script>
-    // Initialize cart from local storage or an empty array
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // Function to update local storage and cart UI
-    function updateCart() {
-        localStorage.setItem('cart', JSON.stringify(cart)); // Store cart in local storage
-        const cartItemsDiv = document.getElementById("cart-items");
-        const totalPrice = document.getElementById("total-price");
-        cartItemsDiv.innerHTML = "";
-
-        let total = 0;
-        cart.forEach(item => {
-            const itemElement = document.createElement("p");
-            itemElement.textContent = `${item.name} - $${item.price} x ${item.quantity}`;
-            cartItemsDiv.appendChild(itemElement);
-            total += item.price * item.quantity;
-        });
-
-        totalPrice.textContent = total.toFixed(2);
-    }
-
-    // Handle "Add to Cart" button click
-    const addToCartButtons = document.querySelectorAll(".add-to-cart");
-    addToCartButtons.forEach((button, index) => {
-        button.addEventListener("click", function() {
-            const productTile = this.parentElement.parentElement;
-            const productName = productTile.dataset.name;
-            const productPrice = parseFloat(productTile.dataset.price);
-
-            // Check if product is already in cart
-            const existingProduct = cart.find(item => item.name === productName);
-            if (existingProduct) {
-                existingProduct.quantity += 1;
-            } else {
-                cart.push({ name: productName, price: productPrice, quantity: 1, image: index + 1 }); // Add image index
-            }
-
-            updateCart();
-        });
-    });
-
-    // Handle checkout (optional)
-    document.getElementById("checkout").addEventListener("click", function() {
-        alert("Proceeding to checkout!");
-    });
-</script>
 
 </body>
 </html>
