@@ -154,6 +154,10 @@
     const amount = document.getElementById('donationAmount').value;
     alert(`You have chosen to donate $${amount}`);
   }
+    function saveAmount() {
+      const amount = document.getElementById('donationAmount').value;
+      window.location.href = `payment.html?donationAmount=${encodeURIComponent(amount)}`;
+  }
 </script>
 
 </body>
