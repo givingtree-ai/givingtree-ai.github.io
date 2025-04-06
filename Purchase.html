@@ -3,135 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Header and Button Bar</title>
-  <style>
-       body {
-      background-color: #B5C99A; /* New background color */
-    }
-
-      header {
-      background-color: #333;
-      color: white;
-      padding: 15px;
-      font-size: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-  
-  .buttons a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 12px;
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-size: inherit;
-    }
-
-    .buttons a:hover {
-      text-decoration: underline;
-    }
-
-    .buttons a.active {
-      text-decoration: underline;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 10px;
-    }
-
-    p {
-      font-size: 18px;
-      text-align: left;
-      margin: 40px;
-    }
-
-    h2 {
-      font-size: 24px;
-      font-weight: bold;
-      margin: 20px;
-      text-align: center;
-    }
-
-    .iframe-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-  </style>
-</head>
-<body>
-
-<header>
-  Giving Tree
-  <div class="buttons">
-    <a href="index.html" class="home">Home</a>
-    <a href="Purchase.html">Purchase</a>
-    <a href="Donate.html">Donate</a>
-    <a href="Volunteer.html">Volunteer</a>
-    <a href="Cart.html">
-      <img src="carticon.png" alt="Cart" style="width: 30px; height: 30px;">
-    </a>
-    <a href="userdashboard.html">
-      <img src="usericon.png" alt="User Profile" style="width: 30px; height: 30px;">
-    </a>
-  </div>
-</header>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Marketplace</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: "Roboto Condensed", sans-serif;
-      background-color: #FEFAE0;
+      background-color: #B5C99A; /* Updated background color */
       margin: 0;
       padding: 0;
     }
 
     header {
-      background-color: #333;
-      color: white;
-      padding: 15px;
+      text-align: center;
       font-size: 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 6px;
       margin: 20px;
-    }
-
-    .buttons a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 12px;
-      background: none;
-      border: none;
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: inherit;
-    }
-
-    .buttons a:hover {
-      text-decoration: underline;
     }
 
     .product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 10px; /* Reduced vertical and horizontal spacing */
       margin: 20px;
     }
 
     .product-tile {
       background-color: white;
-      padding: 20px;
+      padding: 15px; /* Reduced padding */
       border-radius: 6px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       text-align: center;
@@ -145,7 +42,7 @@
     }
 
     .product-info {
-      margin-top: 10px;
+      margin-top: 5px; /* Reduced margin */
     }
 
     .product-info p {
@@ -172,8 +69,8 @@
     }
 
     .add-to-cart {
-      margin-top: 15px;
-      padding: 10px 20px;
+      margin-top: 10px; /* Reduced margin */
+      padding: 8px 16px;
       background-color: #28a745;
       color: white;
       border: none;
@@ -192,12 +89,6 @@
 
 <header>
   <span>Marketplace</span>
-  <div class="buttons">
-    <a href="index.html" class="home">Home</a>
-    <a href="Donate.html">Donate</a>
-    <a href="Volunteer.html">Volunteer</a>
-    <a href="Cart.html">Cart</a>
-  </div>
 </header>
 
 <div class="product-grid">
@@ -245,8 +136,7 @@
       <button class="add-to-cart">Add to Cart</button>
     </div>
   </div>
-  <!-- Add more product tiles here (up to p16) following the same structure -->
-  <!-- Example for product 5: -->
+  <!-- Product Tile 5 -->
   <div class="product-tile">
     <img src="p5.png" alt="Product 5">
     <div class="product-info">
@@ -257,22 +147,128 @@
       <button class="add-to-cart">Add to Cart</button>
     </div>
   </div>
-  <!-- Continue for product tiles 6-16 -->
+  <!-- Product Tile 6 -->
+  <div class="product-tile">
+    <img src="p6.png" alt="Product 6">
+    <div class="product-info">
+      <p>(30+ ppl bought in last month)</p>
+      <p class="product-name">Lettuce</p>
+      <p class="best-by">Best by: April 5, 2025</p>
+      <p class="price">$2/lb</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+  <!-- Product Tile 7 -->
+  <div class="product-tile">
+    <img src="p7.png" alt="Product 7">
+    <div class="product-info">
+      <p>(8+ ppl bought in last month)</p>
+      <p class="product-name">Cucumber</p>
+      <p class="best-by">Best by: May 2, 2025</p>
+      <p class="price">$2/lb</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+  <!-- Product Tile 8 -->
+  <div class="product-tile">
+    <img src="p8.png" alt="Product 8">
+    <div class="product-info">
+      <p>(17+ ppl bought in last month)</p>
+      <p class="product-name">Spinach</p>
+      <p class="best-by">Best by: May 3, 2025</p>
+      <p class="price">$2/lb</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+  <!-- Product Tile 9 -->
+  <div class="product-tile">
+    <img src="p9.png" alt="Product 9">
+    <div class="product-info">
+      <p>(22+ ppl bought in last month)</p>
+      <p class="product-name">Kale</p>
+      <p class="best-by">Best by: May 7, 2025</p>
+      <p class="price">$2/lb</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+  <!-- Product Tile 10 -->
+  <div class="product-tile">
+    <img src="p10.png" alt="Product 10">
+    <div class="product-info">
+      <p>(9+ ppl bought in last month)</p>
+      <p class="product-name">Cabbage</p>
+      <p class="best-by">Best by: May 14, 2025</p>
+      <p class="price">$2/lb</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+  <!-- Product Tile 11 -->
+  <div class="product-tile">
+    <img src="p11.png" alt="Product 11">
+    <div class="product-info">
+      <p>(18+ ppl bought in last month)</p>
+      <p class="product-name">Zucchini</p>
+      <p class="best-by">Best by: May 13, 2025</p>
+      <p class="price">$2/lb</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+  <!-- Product Tile 12 -->
+  <div class="product-tile">
+    <img src="p12.png" alt="Product 12">
+    <div class="product-info">
+      <p>(12+ ppl bought in last month)</p>
+      <p class="product-name">Onion</p>
+      <p class="best-by">Best by: May 20, 2025</p>
+      <p class="price">$2/lb</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+  <!-- Product Tile 13 -->
+  <div class="product-tile">
+    <img src="p13.png" alt="Product 13">
+    <div class="product-info">
+      <p>(6+ ppl bought in last month)</p>
+      <p class="product-name">Lemon</p>
+      <p class="best-by">Best by: May 12, 2025</p>
+      <p class="price">$2/lb</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+  <!-- Product Tile 14 -->
+  <div class="product-tile">
+    <img src="p14.png" alt="Product 14">
+    <div class="product-info">
+      <p>(14+ ppl bought in last month)</p>
+      <p class="product-name">Pineapple</p>
+      <p class="best-by">Best by: May 18, 2025</p>
+      <p class="price">$2/lb</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+  <!-- Product Tile 15 -->
+  <div class="product-tile">
+    <img src="p15.png" alt="Product 15">
+    <div class="product-info">
+      <p>(28+ ppl bought in last month)</p>
+      <p class="product-name">Peach</p>
+      <p class="best-by">Best by: May 25, 2025</p>
+      <p class="price">$2/lb</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+  <!-- Product Tile 16 -->
+  <div class="product-tile">
+    <img src="p16.png" alt="Product 16">
+    <div class="product-info">
+      <p>(35+ ppl bought in last month)</p>
+      <p class="product-name">Mango</p>
+      <p class="best-by">Best by: May 30, 2025</p>
+      <p class="price">$2/lb</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
 </div>
 
 </body>
 </html>
-
-
-<script>
-  // Function to highlight active page
-  document.querySelectorAll('.buttons a').forEach(link => {
-    if (window.location.href.includes(link.getAttribute('href'))) {
-      link.classList.add('active');
-    }
-  });
-</script>
-
-</body>
-</html>
-
